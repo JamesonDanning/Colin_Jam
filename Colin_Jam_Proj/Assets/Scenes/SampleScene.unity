@@ -1127,6 +1127,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1928628239, guid: 676f38287c9bdd541989c14e492d50e5, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: cbdada6b9a71ed74a833510f77377a2a, type: 2}
     - target: {fileID: 1928628240, guid: 676f38287c9bdd541989c14e492d50e5, type: 3}
       propertyPath: maxVelocity
       value: 1.6
