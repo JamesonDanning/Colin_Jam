@@ -44,11 +44,11 @@ public class PlayerMovement : MonoBehaviour
 
         if(AxisInput.x > 0)
         {
-            self.transform.localScale = new Vector2(-4f, 4f);
+            self.transform.localScale = new Vector2(-1f, 1f);
         }
         else if(AxisInput.x < 0)
         {
-            self.transform.localScale = new Vector2(4f, 4f);
+            self.transform.localScale = new Vector2(1f, 1f);
         }
 
 
