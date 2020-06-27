@@ -369,7 +369,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519420028
 GameObject:
@@ -783,6 +783,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6361395332223577162, guid: fc6f4df41f73fd640b7e8825d0bce4bf,
+        type: 3}
+      propertyPath: speed
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7867607677578808176, guid: fc6f4df41f73fd640b7e8825d0bce4bf,
         type: 3}
       propertyPath: m_Name
@@ -918,6 +923,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerCharacter
       objectReference: {fileID: 0}
+    - target: {fileID: 6111930082821122320, guid: 676f38287c9bdd541989c14e492d50e5,
+        type: 3}
+      propertyPath: m_TagString
+      value: player
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 676f38287c9bdd541989c14e492d50e5, type: 3}
 --- !u!1001 &7159213305820732876
@@ -990,7 +1000,7 @@ PrefabInstance:
     - target: {fileID: 7159213306084621734, guid: bffee117f13d7894ba7fe3d2b9870b4e,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7159213306084621734, guid: bffee117f13d7894ba7fe3d2b9870b4e,
         type: 3}
