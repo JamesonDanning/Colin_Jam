@@ -937,6 +937,16 @@ PrefabInstance:
       propertyPath: sword
       value: 
       objectReference: {fileID: 1928628235}
+    - target: {fileID: -3977363804227080645, guid: bffee117f13d7894ba7fe3d2b9870b4e,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1928628235}
+    - target: {fileID: -3977363804227080645, guid: bffee117f13d7894ba7fe3d2b9870b4e,
+        type: 3}
+      propertyPath: Radius
+      value: 0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 7159213306084621732, guid: bffee117f13d7894ba7fe3d2b9870b4e,
         type: 3}
       propertyPath: m_Name
@@ -945,7 +955,7 @@ PrefabInstance:
     - target: {fileID: 7159213306084621734, guid: bffee117f13d7894ba7fe3d2b9870b4e,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.87
+      value: -1.02
       objectReference: {fileID: 0}
     - target: {fileID: 7159213306084621734, guid: bffee117f13d7894ba7fe3d2b9870b4e,
         type: 3}
@@ -980,7 +990,7 @@ PrefabInstance:
     - target: {fileID: 7159213306084621734, guid: bffee117f13d7894ba7fe3d2b9870b4e,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7159213306084621734, guid: bffee117f13d7894ba7fe3d2b9870b4e,
         type: 3}
