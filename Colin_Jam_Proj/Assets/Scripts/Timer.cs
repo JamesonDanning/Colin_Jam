@@ -14,6 +14,8 @@ public class Timer : MonoBehaviour
     void Start()
     {
         textBox = gameObject.GetComponent<TextMeshProUGUI>(); //Get reference to text
+        TextMeshProUGUI highScoreText = GameObject.FindGameObjectWithTag("highScore").GetComponent<TextMeshProUGUI>();
+        highScoreText.text = "Best Time: " + PlayerPrefs.GetString("BestTime", "0");
     }
 
     // Update is called once per frame
@@ -21,5 +23,10 @@ public class Timer : MonoBehaviour
     {
         currentTime += Time.deltaTime;
         textBox.text = Math.Floor(currentTime).ToString();
+    }
+
+    void setBestTime(string bestTime) //Call this when game over to set the best time if they beat it
+    {
+        PlayerPrefs.SetString("BestTime", bestTime);
     }
 }
