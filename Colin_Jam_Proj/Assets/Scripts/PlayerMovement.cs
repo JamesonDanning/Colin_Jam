@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public int health;
     Rigidbody2D rb2d;
     public float speed;
     public GameObject self;
@@ -20,7 +21,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
-       
+
 
     }
 
@@ -29,28 +30,41 @@ public class PlayerMovement : MonoBehaviour
     {
 
         Vector2 AxisInput = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-        
 
-        rb2d.AddForce(AxisInput * speed, ForceMode2D.Impulse); 
+        rb2d.AddForce(AxisInput * speed, ForceMode2D.Impulse);
 
         //limits velocity
         rb2d.velocity = Vector2.ClampMagnitude(rb2d.velocity, maxVelocity);
 
         //slows bird down when no input
         if (AxisInput == Vector2.zero)
-        {            
-            rb2d.velocity /= new Vector2(1.05f, 1.05f);         
+        {
+            rb2d.velocity /= new Vector2(1.05f, 1.05f);
         }
-
-        if(AxisInput.x > 0)
+        if (AxisInput.x > 0)
         {
             self.transform.localScale = new Vector2(-1f, 1f);
         }
-        else if(AxisInput.x < 0)
+        else if (AxisInput.x < 0)
         {
             self.transform.localScale = new Vector2(1f, 1f);
         }
 
+        if(health <= 0)
+        {
+            //Game Over stuff
+            Debug.Log("Game Over");
+        }
 
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "enemy")
+        {
+            //Debug.Log("Hit");
+            Destroy(collision.gameObject);
+            health--;
+        }
     }
 }

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - highScore
   - player
+  - enemy
   layers:
   - Default
   - TransparentFX

@@ -7,6 +7,7 @@ public class Enemy1AI : MonoBehaviour
 {
     GameObject player;
     SpriteRenderer enemySpriteRenderer;
+    public int health;
     public float speed;
 
     // Start is called before the first frame update
@@ -28,11 +29,14 @@ public class Enemy1AI : MonoBehaviour
             {
                 enemySpriteRenderer.flipX = false;
             }
-            //transform.LookAt(player.transform.position);
-            //transform.Rotate(new Vector2(1, 1), Space.Self);
-            //transform.Translate(new Vector2(-speed * Time.deltaTime, -speed * Time.deltaTime));
             transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
             //RotateTowards(player.transform.position);
+        }
+
+        if (health <= 0)
+        {
+            //Play sound or death anim
+            Destroy(gameObject);
         }
     }
 

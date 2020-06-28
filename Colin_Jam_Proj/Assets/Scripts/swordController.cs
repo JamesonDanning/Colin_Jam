@@ -9,7 +9,7 @@ public class swordController : MonoBehaviour
     public float speed = 5f;
 
     //new shit
-   // var Parent : Transform;
+    // var Parent : Transform;
     //var Obj : Transform;
     public float Radius = 5;
     float Dist;
@@ -17,10 +17,13 @@ public class swordController : MonoBehaviour
     Vector3 ScreenMouse;
     Vector3 MouseOffset;
 
+    Animator animator;
+
     // Start is called before the first frame update
     void Start()
     {
         //_centre = player.transform.position;
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -45,6 +48,25 @@ public class swordController : MonoBehaviour
         {
             var norm = MouseOffset.normalized;
             transform.position = new Vector3(norm.x * Radius + player.transform.position.x, norm.y * Radius + player.transform.position.y);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        //Debug.Log("Hit " + collision.gameObject.name + " with sword");
+        if (collision.gameObject.tag == "enemy") //Check if sword is hitting enemy
+        {
+            if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !animator.IsInTransition(0)) //Check if animation is playing, if it is, base damage off animation
+            {
+                if (animator.GetCurrentAnimatorStateInfo(0).IsName("Test")) //Check current animation and base damage off that if there is an animation
+                {
+                    //Do damage
+                }
+            }
+            else
+            {
+                collision.gameObject.GetComponent<Enemy1AI>().health -= 1;
+            }
         }
     }
 }
