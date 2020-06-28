@@ -10,8 +10,7 @@ public class Enemy1AI : MonoBehaviour
     public int health;
     public float speed;
     private AudioSource audioSource;
-    //public AudioSource audioSource;
-    //public AudioClip deathSound;
+    CameraShake cameraShake;
 
     // Start is called before the first frame update
     void Start()
@@ -19,7 +18,11 @@ public class Enemy1AI : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("player");
         enemySpriteRenderer = GetComponent<SpriteRenderer>();
         audioSource = this.GetComponent<AudioSource>();
-        //audioSource.clip = deathSound;
+        cameraShake = Camera.main.GetComponent<CameraShake>();
+        if(cameraShake == null)
+        {
+            Debug.LogError("No CameraShake script found on camera object");
+        }
     }
 
     // Update is called once per frame
@@ -46,10 +49,7 @@ public class Enemy1AI : MonoBehaviour
             {
                 audioSource.Play();
             }
-
-            //audioSource.PlayOneShot(deathSound);
-
-            //Destroy(gameObject);
+            cameraShake.Shake(.002f, .01f);
             transform.position = Camera.main.ViewportToWorldPoint(new Vector2(2, 2));
             Destroy(gameObject, audioSource.clip.length);
         }
