@@ -44,7 +44,6 @@ public class Enemy1AI : MonoBehaviour
         if (health <= 0)
         {
             //Play sound or death anim
-            Debug.Log("Playing audio");
             if (!audioSource.isPlaying)
             {
                 audioSource.Play();
