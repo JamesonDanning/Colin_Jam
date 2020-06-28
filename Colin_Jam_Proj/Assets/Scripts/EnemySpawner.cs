@@ -19,7 +19,7 @@ public class EnemySpawner : MonoBehaviour
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         bounds = rend.bounds;
 
-        InvokeRepeating("spawnObject", initalSpawnTime, spawnDelay);
+        InvokeRepeating("SpawnEnemy", initalSpawnTime, spawnDelay);
     }
 
     // Update is called once per frame
@@ -28,13 +28,13 @@ public class EnemySpawner : MonoBehaviour
         
     }
 
-    void spawnObject()
+    void SpawnEnemy()
     {
         float randomNumX = 0;
         float randomNumY = 0;
         if (stopSpawning)
         {
-            CancelInvoke("SpawnObject");
+            CancelInvoke("SpawnEnemy");
         }
         while (!(viewportPoint.x < 0 || viewportPoint.x > 1 || viewportPoint.y > 1))
         {
@@ -47,5 +47,11 @@ public class EnemySpawner : MonoBehaviour
         }
         Instantiate(enemy1, new Vector2(randomNumX, randomNumY), Quaternion.identity);
         viewportPoint = new Vector2(0,0);
+    }
+
+    private void updateSpawnDelay(float newDelay)
+    {
+        CancelInvoke("SpawnEnemy");
+        InvokeRepeating("SpawnEnemy", 0, newDelay);
     }
 }
