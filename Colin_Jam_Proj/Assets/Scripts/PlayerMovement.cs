@@ -62,7 +62,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (collision.gameObject.tag == "enemy")
         {
-            Debug.Log("Hit");
+            //Debug.Log("Hit");
             Destroy(collision.gameObject);
             health--;
         }
