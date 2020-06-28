@@ -19,11 +19,14 @@ public class swordController : MonoBehaviour
 
     Animator animator;
 
+    public ParticleSystem splatter;
+
     // Start is called before the first frame update
     void Start()
     {
         //_centre = player.transform.position;
         animator = GetComponent<Animator>();
+        splatter = GetComponent<ParticleSystem>();
     }
 
     // Update is called once per frame
@@ -67,7 +70,11 @@ public class swordController : MonoBehaviour
             {
                 collision.gameObject.GetComponent<Enemy1AI>().health -= 1;
             }
+
+            splatter.Play();
         }
+
+        
     }
 }
 
