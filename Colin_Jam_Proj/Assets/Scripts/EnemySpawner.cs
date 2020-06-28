@@ -35,6 +35,7 @@ public class EnemySpawner : MonoBehaviour
         if (stopSpawning)
         {
             CancelInvoke("SpawnEnemy");
+            return;
         }
         while (!(viewportPoint.x < 0 || viewportPoint.x > 1 || viewportPoint.y > 1))
         {
