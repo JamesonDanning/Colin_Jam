@@ -9,12 +9,17 @@ public class Enemy1AI : MonoBehaviour
     SpriteRenderer enemySpriteRenderer;
     public int health;
     public float speed;
+    private AudioSource audioSource;
+    //public AudioSource audioSource;
+    //public AudioClip deathSound;
 
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("player");
         enemySpriteRenderer = GetComponent<SpriteRenderer>();
+        audioSource = this.GetComponent<AudioSource>();
+        //audioSource.clip = deathSound;
     }
 
     // Update is called once per frame
@@ -36,7 +41,17 @@ public class Enemy1AI : MonoBehaviour
         if (health <= 0)
         {
             //Play sound or death anim
-            Destroy(gameObject);
+            Debug.Log("Playing audio");
+            if (!audioSource.isPlaying)
+            {
+                audioSource.Play();
+            }
+
+            //audioSource.PlayOneShot(deathSound);
+
+            //Destroy(gameObject);
+            transform.position = Camera.main.ViewportToWorldPoint(new Vector2(2, 2));
+            Destroy(gameObject, audioSource.clip.length);
         }
     }
 
