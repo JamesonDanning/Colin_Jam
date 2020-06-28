@@ -42,9 +42,6 @@ public class EnemySpawner : MonoBehaviour
             randomNumX = Random.Range(bounds.min.x, bounds.max.x);
             randomNumY = Random.Range(bounds.min.y, bounds.max.y);
             viewportPoint = mainCamera.WorldToViewportPoint(new Vector2(randomNumX, randomNumY));
-            Debug.Log("Min x bound: " + bounds.min.x + ", Max x bound: " + bounds.max.x);
-            Debug.Log("Min y bound: " + bounds.min.y + ", Max y bound: " + bounds.max.y);
-            Debug.Log(viewportPoint);
         }
         Instantiate(enemy1, new Vector2(randomNumX, randomNumY), Quaternion.identity);
         viewportPoint = new Vector2(0,0);
