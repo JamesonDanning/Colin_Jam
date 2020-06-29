@@ -2398,22 +2398,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1928628240, guid: 676f38287c9bdd541989c14e492d50e5, type: 3}
-      propertyPath: maxVelocity
-      value: 1.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 1928628240, guid: 676f38287c9bdd541989c14e492d50e5, type: 3}
-      propertyPath: speed
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1928628240, guid: 676f38287c9bdd541989c14e492d50e5, type: 3}
-      propertyPath: health
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1928628240, guid: 676f38287c9bdd541989c14e492d50e5, type: 3}
-      propertyPath: matWhite
-      value: 
-      objectReference: {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
     - target: {fileID: 242709665152668308, guid: 676f38287c9bdd541989c14e492d50e5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2474,31 +2458,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerCharacter
       objectReference: {fileID: 0}
-    - target: {fileID: 6156449848847557139, guid: 676f38287c9bdd541989c14e492d50e5,
-        type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6156449848847557139, guid: 676f38287c9bdd541989c14e492d50e5,
-        type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6156449848847557139, guid: 676f38287c9bdd541989c14e492d50e5,
-        type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6156449848847557139, guid: 676f38287c9bdd541989c14e492d50e5,
-        type: 3}
-      propertyPath: m_Color.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6156449848847557139, guid: 676f38287c9bdd541989c14e492d50e5,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 676f38287c9bdd541989c14e492d50e5, type: 3}
 --- !u!1001 &7159213305820732876
@@ -2521,7 +2480,16 @@ PrefabInstance:
     - target: {fileID: -3977363804227080645, guid: bffee117f13d7894ba7fe3d2b9870b4e,
         type: 3}
       propertyPath: speed
-      value: 10
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: -3977363804227080645, guid: bffee117f13d7894ba7fe3d2b9870b4e,
+        type: 3}
+      propertyPath: Radius
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1841102541, guid: bffee117f13d7894ba7fe3d2b9870b4e, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1841102542, guid: bffee117f13d7894ba7fe3d2b9870b4e, type: 3}
       propertyPath: m_Controller

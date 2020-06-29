@@ -99,12 +99,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d48a9b0aa6217f4cac1aad831cedbb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 0
-  speed: 0.1
+  health: 3
+  speed: 0.2
   self: {fileID: 6111930082821122320}
   deathSound: {fileID: 8300000, guid: 5a63cfa59ea53334098c68fce9528d84, type: 3}
   maxVelocity: 1
-  matWhite: {fileID: 0}
+  matWhite: {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
 --- !u!95 &2271757638820870367
 Animator:
   serializedVersion: 3

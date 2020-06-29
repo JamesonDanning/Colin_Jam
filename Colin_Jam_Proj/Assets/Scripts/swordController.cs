@@ -56,7 +56,7 @@ public class swordController : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         //Debug.Log("Hit " + collision.gameObject.name + " with sword");
         if (collision.gameObject.tag == "enemy") //Check if sword is hitting enemy
@@ -73,15 +73,38 @@ public class swordController : MonoBehaviour
             }
             else
             {
+             
                 collision.gameObject.GetComponent<Enemy1AI>().health -= 1;
                 if(collision.gameObject.GetComponent<Enemy1AI>().health <= 0)
                 {
                     timer.incrementBirdsSlain();
                 }
-                //try to push living birds back here
+                else
+                {
+
+                    Debug.Log("Push");
+                    //try to push living birds back here
+                    if (collision.gameObject.GetComponent<Enemy1AI>().enemySpriteRenderer.flipX == true)
+                    {
+                       
+                        //position.x gets minus amount
+                        Vector3 targetPosition = collision.gameObject.transform.position + new Vector3(-3f, 0f, 0f);
+                        collision.gameObject.transform.position = Vector3.Lerp(collision.gameObject.transform.position, targetPosition, 5 * Time.deltaTime);
+                    }
+                    else
+                    {
+                        Vector3 targetPosition = collision.gameObject.transform.position + new Vector3(3f, 0f, 0f);
+                        collision.gameObject.transform.position = Vector3.Lerp(collision.gameObject.transform.position, targetPosition, 5 * Time.deltaTime);
+                    }
+                }
+               
             }
         }
     }
+
+   
+
+
 }
 
 

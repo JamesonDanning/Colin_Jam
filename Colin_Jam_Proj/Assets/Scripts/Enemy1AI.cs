@@ -6,12 +6,13 @@ using UnityEngine;
 public class Enemy1AI : MonoBehaviour
 {
     GameObject player;
-    SpriteRenderer enemySpriteRenderer;
+    public SpriteRenderer enemySpriteRenderer;
     public int health;
     public float speed;
     private AudioSource audioSource;
     CameraShake cameraShake;
-
+    public Material matWhite;
+    private Material matDefault;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +24,8 @@ public class Enemy1AI : MonoBehaviour
         {
             Debug.LogError("No CameraShake script found on camera object");
         }
+
+        matDefault = enemySpriteRenderer.material;
     }
 
     // Update is called once per frame
@@ -58,6 +61,22 @@ public class Enemy1AI : MonoBehaviour
             Destroy(gameObject, audioSource.clip.length);
         }
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "sword")
+        {
+            enemySpriteRenderer.material = matWhite;
+            Invoke("ResetMaterial", .2f);
+        }
+    }
+
+
+    void ResetMaterial()
+    {
+        enemySpriteRenderer.material = matDefault;
+    }
+
 
 
     /*private void RotateTowards(Vector2 target)
