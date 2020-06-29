@@ -1712,6 +1712,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy1: {fileID: 7867607677578808176, guid: fc6f4df41f73fd640b7e8825d0bce4bf, type: 3}
+  enemy2: {fileID: 7867607677578808176, guid: 784e162bf1eb83c489147c381a90187a, type: 3}
   initalSpawnTime: 0
   spawnDelay: 2
   stopSpawning: 0
@@ -2517,25 +2518,33 @@ PrefabInstance:
       propertyPath: splatter
       value: 
       objectReference: {fileID: 1787289344}
+    - target: {fileID: -3977363804227080645, guid: bffee117f13d7894ba7fe3d2b9870b4e,
+        type: 3}
+      propertyPath: speed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1841102542, guid: bffee117f13d7894ba7fe3d2b9870b4e, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 9f8cf6a7ff0029d4a9934eda77395238, type: 2}
+    - target: {fileID: 1841102542, guid: bffee117f13d7894ba7fe3d2b9870b4e, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7159213306084621732, guid: bffee117f13d7894ba7fe3d2b9870b4e,
         type: 3}
       propertyPath: m_Name
       value: sword
       objectReference: {fileID: 0}
-    - target: {fileID: 7159213306084621732, guid: bffee117f13d7894ba7fe3d2b9870b4e,
-        type: 3}
-      propertyPath: m_TagString
-      value: sword
-      objectReference: {fileID: 0}
     - target: {fileID: 7159213306084621734, guid: bffee117f13d7894ba7fe3d2b9870b4e,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.02
+      value: -0.041
       objectReference: {fileID: 0}
     - target: {fileID: 7159213306084621734, guid: bffee117f13d7894ba7fe3d2b9870b4e,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.06
+      value: -0.047
       objectReference: {fileID: 0}
     - target: {fileID: 7159213306084621734, guid: bffee117f13d7894ba7fe3d2b9870b4e,
         type: 3}
