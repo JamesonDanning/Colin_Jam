@@ -53,7 +53,12 @@ public class EnemySpawner : MonoBehaviour
         {
             Instantiate(enemy2, new Vector2(randomNumX, randomNumY), Quaternion.identity);
             enemySwap = 0;
-            spawnDelay *= .9f;
+
+           
+            if(spawnDelay >= 0.001f)
+            {
+                spawnDelay *= .9f;
+            }
             updateSpawnDelay(spawnDelay);
         }
         else

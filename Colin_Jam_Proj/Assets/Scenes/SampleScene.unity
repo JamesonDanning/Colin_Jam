@@ -2833,6 +2833,14 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1841102541, guid: bffee117f13d7894ba7fe3d2b9870b4e, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.19712321
+      objectReference: {fileID: 0}
+    - target: {fileID: 1841102541, guid: bffee117f13d7894ba7fe3d2b9870b4e, type: 3}
+      propertyPath: m_Size.x
+      value: 0.2657536
+      objectReference: {fileID: 0}
     - target: {fileID: 1841102542, guid: bffee117f13d7894ba7fe3d2b9870b4e, type: 3}
       propertyPath: m_Controller
       value: 
@@ -2846,6 +2854,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: sword
       objectReference: {fileID: 0}
+    - target: {fileID: 7159213306084621733, guid: bffee117f13d7894ba7fe3d2b9870b4e,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 2b933563cdc84d64a8c8cda0ac1d158f,
+        type: 3}
     - target: {fileID: 7159213306084621734, guid: bffee117f13d7894ba7fe3d2b9870b4e,
         type: 3}
       propertyPath: m_LocalPosition.x
