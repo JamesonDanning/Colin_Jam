@@ -11,18 +11,20 @@ public class PlayerMovement : MonoBehaviour
     //private float curSpeed;
     //private float maxSpeed;
     public float maxVelocity;
-
+    SpriteRenderer spriteRenderer;
     float horizontal;
     float vertical;
-
+    public Material matWhite;
+    private Material matDefault;
 
 
     // Start is called before the first frame update
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
-
-
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        //matWhite = Resources.Load("LiberationSans SDF Material", typeof(Material)) as Material;
+        matDefault = spriteRenderer.material;
     }
 
     // Update is called once per frame
@@ -49,13 +51,6 @@ public class PlayerMovement : MonoBehaviour
         {
             self.transform.localScale = new Vector2(1f, 1f);
         }
-
-        if(health <= 0)
-        {
-            //Game Over stuff
-            Debug.Log("Game Over");
-        }
-
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -65,6 +60,20 @@ public class PlayerMovement : MonoBehaviour
             //Debug.Log("Hit");
             Destroy(collision.gameObject);
             health--;
+            spriteRenderer.material = matWhite;
+            if (health <= 0)
+            {
+                //Game Over stuff
+                Debug.Log("Game Over");
+            } else
+            {
+                Invoke("ResetMaterial", .2f);
+            }
         }
+    }
+
+    void ResetMaterial()
+    {
+        spriteRenderer.material = matDefault;
     }
 }
