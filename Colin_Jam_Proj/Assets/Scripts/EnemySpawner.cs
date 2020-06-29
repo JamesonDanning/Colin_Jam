@@ -55,7 +55,7 @@ public class EnemySpawner : MonoBehaviour
             enemySwap = 0;
 
            
-            if(spawnDelay >= 0.001f)
+            if(spawnDelay >= 0.0001f)
             {
                 spawnDelay *= .9f;
             }
