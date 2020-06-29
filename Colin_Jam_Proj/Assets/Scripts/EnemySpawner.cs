@@ -35,15 +35,6 @@ public class EnemySpawner : MonoBehaviour
 
     void SpawnEnemy()
     {
-        //Debug.Log("Slain Birds: " + timer.getBirdsSlain());
-        if (timer.getBirdsSlain() == 4)
-        {
-            Debug.Log("Updated Spawn Delay");
-            updateSpawnDelay(.8f);
-        } else if (timer.getBirdsSlain() == 10)
-        {
-            updateSpawnDelay(.5f);
-        }
         enemySwap++;
         float randomNumX = 0;
         float randomNumY = 0;
@@ -62,7 +53,8 @@ public class EnemySpawner : MonoBehaviour
         {
             Instantiate(enemy2, new Vector2(randomNumX, randomNumY), Quaternion.identity);
             enemySwap = 0;
-            spawnDelay /= 10f;
+            spawnDelay *= .9f;
+            updateSpawnDelay(spawnDelay);
         }
         else
         {
