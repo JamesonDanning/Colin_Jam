@@ -19,7 +19,7 @@ public class Enemy1AI : MonoBehaviour
         enemySpriteRenderer = GetComponent<SpriteRenderer>();
         audioSource = this.GetComponent<AudioSource>();
         cameraShake = Camera.main.GetComponent<CameraShake>();
-        if(cameraShake == null)
+        if (cameraShake == null)
         {
             Debug.LogError("No CameraShake script found on camera object");
         }
@@ -28,18 +28,23 @@ public class Enemy1AI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Vector2.Distance(transform.position, player.transform.position) != 0)
+        if (player)
         {
-            if(transform.position.x < player.transform.position.x)
+            if (Vector2.Distance(transform.position, player.transform.position) != 0)
             {
-                enemySpriteRenderer.flipX = true;
-            } else
-            {
-                enemySpriteRenderer.flipX = false;
+                if (transform.position.x < player.transform.position.x)
+                {
+                    enemySpriteRenderer.flipX = true;
+                }
+                else
+                {
+                    enemySpriteRenderer.flipX = false;
+                }
+                transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
+                //RotateTowards(player.transform.position);
             }
-            transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
-            //RotateTowards(player.transform.position);
         }
+
 
         if (health <= 0)
         {
