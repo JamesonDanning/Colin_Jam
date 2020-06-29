@@ -12,6 +12,7 @@ public class EnemySpawner : MonoBehaviour
     private Bounds bounds;
     private Camera mainCamera;
     private Vector2 viewportPoint;
+    private Timer timer;
 
     private int enemySwap = 0;
 
@@ -20,6 +21,7 @@ public class EnemySpawner : MonoBehaviour
     {
         Renderer rend = GetComponent<Renderer>();
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+        timer = GameObject.FindGameObjectWithTag("timer").GetComponent<Timer>();
         bounds = rend.bounds;
 
         InvokeRepeating("SpawnEnemy", initalSpawnTime, spawnDelay);
@@ -28,11 +30,20 @@ public class EnemySpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     void SpawnEnemy()
     {
+        //Debug.Log("Slain Birds: " + timer.getBirdsSlain());
+        if (timer.getBirdsSlain() == 4)
+        {
+            Debug.Log("Updated Spawn Delay");
+            updateSpawnDelay(.8f);
+        } else if (timer.getBirdsSlain() == 10)
+        {
+            updateSpawnDelay(.5f);
+        }
         enemySwap++;
         float randomNumX = 0;
         float randomNumY = 0;
@@ -63,6 +74,6 @@ public class EnemySpawner : MonoBehaviour
     private void updateSpawnDelay(float newDelay)
     {
         CancelInvoke("SpawnEnemy");
-        InvokeRepeating("SpawnEnemy", 0, newDelay);
+        InvokeRepeating("SpawnEnemy", 1, newDelay);
     }
 }
