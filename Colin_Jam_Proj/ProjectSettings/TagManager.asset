@@ -9,6 +9,8 @@ TagManager:
   - enemy
   - play
   - quit
+  - showOnGameOver
+  - sword
   layers:
   - Default
   - TransparentFX

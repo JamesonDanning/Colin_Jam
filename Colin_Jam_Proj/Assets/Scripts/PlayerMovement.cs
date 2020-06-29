@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
     float vertical;
     public Material matWhite;
     private Material matDefault;
+    GameObject[] gameOverText;
 
 
     // Start is called before the first frame update
@@ -25,6 +27,11 @@ public class PlayerMovement : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         //matWhite = Resources.Load("LiberationSans SDF Material", typeof(Material)) as Material;
         matDefault = spriteRenderer.material;
+        gameOverText = GameObject.FindGameObjectsWithTag("showOnGameOver");
+        foreach (GameObject text in gameOverText)
+        {
+            text.SetActive(false);
+        }
     }
 
     // Update is called once per frame
@@ -66,6 +73,12 @@ public class PlayerMovement : MonoBehaviour
             {
                 //Game Over stuff
                 Debug.Log("Game Over");
+                Destroy(gameObject);
+                Destroy(GameObject.FindGameObjectWithTag("sword"));
+                foreach (GameObject text in gameOverText)
+                {
+                    text.SetActive(true);
+                }
             }
         }
     }
