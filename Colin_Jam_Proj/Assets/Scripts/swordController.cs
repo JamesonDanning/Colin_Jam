@@ -26,7 +26,8 @@ public class swordController : MonoBehaviour
     {
         //_centre = player.transform.position;
         animator = GetComponent<Animator>();
-        splatter = GetComponent<ParticleSystem>();
+        
+        Debug.Log("Here is our particle" + splatter.name);
     }
 
     // Update is called once per frame
@@ -71,6 +72,10 @@ public class swordController : MonoBehaviour
                 collision.gameObject.GetComponent<Enemy1AI>().health -= 1;
             }
 
+            
+            splatter.transform.position = collision.gameObject.transform.position;
+            
+            
             splatter.Play();
         }
 
