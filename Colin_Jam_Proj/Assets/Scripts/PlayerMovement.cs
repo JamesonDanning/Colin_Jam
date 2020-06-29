@@ -7,6 +7,9 @@ using UnityEngine.SceneManagement;
 public class PlayerMovement : MonoBehaviour
 {
     public int health;
+    private GameObject healthIcon1;
+    private GameObject healthIcon2;
+    private GameObject healthIcon3;
     Rigidbody2D rb2d;
     public float speed;
     public GameObject self;
@@ -31,6 +34,9 @@ public class PlayerMovement : MonoBehaviour
         rb2d = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         audioSource = this.GetComponent<AudioSource>();
+        healthIcon1 = GameObject.Find("HealthIcon1");
+        healthIcon2 = GameObject.Find("HealthIcon2");
+        healthIcon3 = GameObject.Find("HealthIcon3");
         timerText = GameObject.FindGameObjectWithTag("timer");
         timer = timerText.GetComponent<Timer>();
         //matWhite = Resources.Load("LiberationSans SDF Material", typeof(Material)) as Material;
@@ -76,6 +82,19 @@ public class PlayerMovement : MonoBehaviour
             //Debug.Log("Hit");
             Destroy(collision.gameObject);
             health--;
+            switch (health)
+            {
+                case 2:
+                    healthIcon3.GetComponent<Animator>().SetTrigger("tookDamage");
+                    break;
+                case 1:
+                    healthIcon2.GetComponent<Animator>().SetTrigger("tookDamage");
+                    break;
+                case 0:
+                    healthIcon1.GetComponent<Animator>().SetTrigger("tookDamage");
+                    break;
+            }
+            
             spriteRenderer.material = matWhite;
             Invoke("ResetMaterial", .2f);
             if (health <= 0)
