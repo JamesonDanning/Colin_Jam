@@ -61,13 +61,11 @@ public class PlayerMovement : MonoBehaviour
             Destroy(collision.gameObject);
             health--;
             spriteRenderer.material = matWhite;
+            Invoke("ResetMaterial", .2f);
             if (health <= 0)
             {
                 //Game Over stuff
                 Debug.Log("Game Over");
-            } else
-            {
-                Invoke("ResetMaterial", .2f);
             }
         }
     }
