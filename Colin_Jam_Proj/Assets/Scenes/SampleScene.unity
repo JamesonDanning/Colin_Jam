@@ -1714,7 +1714,7 @@ MonoBehaviour:
   enemy1: {fileID: 7867607677578808176, guid: fc6f4df41f73fd640b7e8825d0bce4bf, type: 3}
   enemy2: {fileID: 7867607677578808176, guid: 784e162bf1eb83c489147c381a90187a, type: 3}
   initalSpawnTime: 0
-  spawnDelay: 2
+  spawnDelay: 0.9
   stopSpawning: 0
 --- !u!1 &1459105116
 GameObject:
