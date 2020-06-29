@@ -12,6 +12,7 @@ TagManager:
   - showOnGameOver
   - sword
   - timer
+  - music
   layers:
   - Default
   - TransparentFX

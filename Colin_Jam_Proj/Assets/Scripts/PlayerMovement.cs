@@ -10,6 +10,8 @@ public class PlayerMovement : MonoBehaviour
     Rigidbody2D rb2d;
     public float speed;
     public GameObject self;
+    private AudioSource audioSource;
+    public AudioClip deathSound;
     //private float curSpeed;
     //private float maxSpeed;
     public float maxVelocity;
@@ -28,6 +30,7 @@ public class PlayerMovement : MonoBehaviour
     {
         rb2d = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        audioSource = this.GetComponent<AudioSource>();
         timerText = GameObject.FindGameObjectWithTag("timer");
         timer = timerText.GetComponent<Timer>();
         //matWhite = Resources.Load("LiberationSans SDF Material", typeof(Material)) as Material;
@@ -79,9 +82,14 @@ public class PlayerMovement : MonoBehaviour
             {
                 //Game Over stuff
                 Debug.Log("Game Over");
-                Destroy(gameObject);
-                Destroy(GameObject.FindGameObjectWithTag("sword"));
-                if(timer.getBirdsSlain() > timer.getHighScore())
+                audioSource.clip = deathSound;
+                audioSource.Play();
+                transform.position = Camera.main.ViewportToWorldPoint(new Vector2(2, 2));
+                Destroy(gameObject, audioSource.clip.length);
+                GameObject sword = GameObject.FindGameObjectWithTag("sword");
+                sword.transform.position = Camera.main.ViewportToWorldPoint(new Vector2(2, 2));
+                Destroy(sword, audioSource.clip.length);
+                if (timer.getBirdsSlain() > timer.getHighScore())
                 {
                     timer.setHighScore(timer.getBirdsSlain());
                     Debug.Log("New high Score: " + timer.getBirdsSlain());
@@ -96,6 +104,13 @@ public class PlayerMovement : MonoBehaviour
                 gameOverHighScoreText.text = "Your record is " + timer.getHighScore() + " birds!";
                 timerText.SetActive(false);
                 highScoreText.SetActive(false);
+            }
+            else
+            {
+                if (!audioSource.isPlaying)
+                {
+                    audioSource.Play();
+                }
             }
         }
     }
