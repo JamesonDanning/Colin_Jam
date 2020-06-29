@@ -7,7 +7,7 @@ public class swordController : MonoBehaviour
     public GameObject player;
     float angle;
     public float speed = 5f;
-
+    private Timer timer;
     //new shit
     // var Parent : Transform;
     //var Obj : Transform;
@@ -26,7 +26,7 @@ public class swordController : MonoBehaviour
     {
         //_centre = player.transform.position;
         animator = GetComponent<Animator>();
-        splatter = GetComponent<ParticleSystem>();
+        timer = GameObject.FindGameObjectWithTag("timer").GetComponent<Timer>();
     }
 
     // Update is called once per frame
@@ -59,6 +59,9 @@ public class swordController : MonoBehaviour
         //Debug.Log("Hit " + collision.gameObject.name + " with sword");
         if (collision.gameObject.tag == "enemy") //Check if sword is hitting enemy
         {
+            timer.incrementBirdsSlain();
+            splatter.transform.position = collision.gameObject.transform.position;
+            splatter.Play();
             if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !animator.IsInTransition(0)) //Check if animation is playing, if it is, base damage off animation
             {
                 if (animator.GetCurrentAnimatorStateInfo(0).IsName("Test")) //Check current animation and base damage off that if there is an animation
@@ -70,11 +73,7 @@ public class swordController : MonoBehaviour
             {
                 collision.gameObject.GetComponent<Enemy1AI>().health -= 1;
             }
-
-            splatter.Play();
         }
-
-        
     }
 }
 

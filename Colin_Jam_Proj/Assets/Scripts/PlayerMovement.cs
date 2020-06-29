@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -8,21 +10,37 @@ public class PlayerMovement : MonoBehaviour
     Rigidbody2D rb2d;
     public float speed;
     public GameObject self;
+    private AudioSource audioSource;
+    public AudioClip deathSound;
     //private float curSpeed;
     //private float maxSpeed;
     public float maxVelocity;
-
+    SpriteRenderer spriteRenderer;
     float horizontal;
     float vertical;
-
-
+    public Material matWhite;
+    private Material matDefault;
+    GameObject[] gameOverText;
+    private Timer timer;
+    private GameObject timerText;
+    private GameObject highScoreText;
 
     // Start is called before the first frame update
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
-
-
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        audioSource = this.GetComponent<AudioSource>();
+        timerText = GameObject.FindGameObjectWithTag("timer");
+        timer = timerText.GetComponent<Timer>();
+        //matWhite = Resources.Load("LiberationSans SDF Material", typeof(Material)) as Material;
+        matDefault = spriteRenderer.material;
+        gameOverText = GameObject.FindGameObjectsWithTag("showOnGameOver");
+        highScoreText = GameObject.FindGameObjectWithTag("highScore");
+        foreach (GameObject text in gameOverText)
+        {
+            text.SetActive(false);
+        }
     }
 
     // Update is called once per frame
@@ -49,13 +67,6 @@ public class PlayerMovement : MonoBehaviour
         {
             self.transform.localScale = new Vector2(1f, 1f);
         }
-
-        if(health <= 0)
-        {
-            //Game Over stuff
-            Debug.Log("Game Over");
-        }
-
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -65,6 +76,47 @@ public class PlayerMovement : MonoBehaviour
             //Debug.Log("Hit");
             Destroy(collision.gameObject);
             health--;
+            spriteRenderer.material = matWhite;
+            Invoke("ResetMaterial", .2f);
+            if (health <= 0)
+            {
+                //Game Over stuff
+                Debug.Log("Game Over");
+                audioSource.clip = deathSound;
+                audioSource.Play();
+                transform.position = Camera.main.ViewportToWorldPoint(new Vector2(2, 2));
+                Destroy(gameObject, audioSource.clip.length);
+                GameObject sword = GameObject.FindGameObjectWithTag("sword");
+                sword.transform.position = Camera.main.ViewportToWorldPoint(new Vector2(2, 2));
+                Destroy(sword, audioSource.clip.length);
+                if (timer.getBirdsSlain() > timer.getHighScore())
+                {
+                    timer.setHighScore(timer.getBirdsSlain());
+                    Debug.Log("New high Score: " + timer.getBirdsSlain());
+                }
+                foreach (GameObject text in gameOverText)
+                {
+                    text.SetActive(true);
+                }
+                TextMeshProUGUI birdCountText = GameObject.Find("BirdCount").GetComponent<TextMeshProUGUI>();
+                birdCountText.text = "You cut down " + timer.getBirdsSlain() + " birds!";
+                TextMeshProUGUI gameOverHighScoreText = GameObject.Find("GameOverHighScore").GetComponent<TextMeshProUGUI>();
+                gameOverHighScoreText.text = "Your record is " + timer.getHighScore() + " birds!";
+                timerText.SetActive(false);
+                highScoreText.SetActive(false);
+            }
+            else
+            {
+                if (!audioSource.isPlaying)
+                {
+                    audioSource.Play();
+                }
+            }
         }
+    }
+
+    void ResetMaterial()
+    {
+        spriteRenderer.material = matDefault;
     }
 }

@@ -7,6 +7,12 @@ TagManager:
   - highScore
   - player
   - enemy
+  - play
+  - quit
+  - showOnGameOver
+  - sword
+  - timer
+  - music
   layers:
   - Default
   - TransparentFX
