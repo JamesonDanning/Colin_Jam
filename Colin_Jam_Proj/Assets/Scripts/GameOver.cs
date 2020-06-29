@@ -5,18 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class GameOver : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void resetScene()
     {
         SceneManager.LoadScene("SampleScene");
@@ -24,6 +12,6 @@ public class GameOver : MonoBehaviour
 
     public void backToMenu()
     {
-        SceneManager.LoadScene("mainMenu");
+        SceneManager.LoadScene("MainMenu");
     }
 }

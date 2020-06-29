@@ -11,6 +11,7 @@ TagManager:
   - quit
   - showOnGameOver
   - sword
+  - timer
   layers:
   - Default
   - TransparentFX

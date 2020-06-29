@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -18,16 +19,21 @@ public class PlayerMovement : MonoBehaviour
     public Material matWhite;
     private Material matDefault;
     GameObject[] gameOverText;
-
+    private Timer timer;
+    private GameObject timerText;
+    private GameObject highScoreText;
 
     // Start is called before the first frame update
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        timerText = GameObject.FindGameObjectWithTag("timer");
+        timer = timerText.GetComponent<Timer>();
         //matWhite = Resources.Load("LiberationSans SDF Material", typeof(Material)) as Material;
         matDefault = spriteRenderer.material;
         gameOverText = GameObject.FindGameObjectsWithTag("showOnGameOver");
+        highScoreText = GameObject.FindGameObjectWithTag("highScore");
         foreach (GameObject text in gameOverText)
         {
             text.SetActive(false);
@@ -75,10 +81,21 @@ public class PlayerMovement : MonoBehaviour
                 Debug.Log("Game Over");
                 Destroy(gameObject);
                 Destroy(GameObject.FindGameObjectWithTag("sword"));
+                if(timer.getBirdsSlain() > timer.getHighScore())
+                {
+                    timer.setHighScore(timer.getBirdsSlain());
+                    Debug.Log("New high Score: " + timer.getBirdsSlain());
+                }
                 foreach (GameObject text in gameOverText)
                 {
                     text.SetActive(true);
                 }
+                TextMeshProUGUI birdCountText = GameObject.Find("BirdCount").GetComponent<TextMeshProUGUI>();
+                birdCountText.text = "You cut down " + timer.getBirdsSlain() + " birds!";
+                TextMeshProUGUI gameOverHighScoreText = GameObject.Find("GameOverHighScore").GetComponent<TextMeshProUGUI>();
+                gameOverHighScoreText.text = "Your record is " + timer.getHighScore() + " birds!";
+                timerText.SetActive(false);
+                highScoreText.SetActive(false);
             }
         }
     }
