@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 1841102542}
   m_Layer: 0
   m_Name: sword
-  m_TagString: Untagged
+  m_TagString: sword
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 2b933563cdc84d64a8c8cda0ac1d158f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 14d25a35aec9b0045b1be2c1a332c348, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

@@ -21,6 +21,8 @@ public class swordController : MonoBehaviour
 
     public ParticleSystem splatter;
 
+    private Vector3 velocity = Vector3.zero;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -59,7 +61,7 @@ public class swordController : MonoBehaviour
         //Debug.Log("Hit " + collision.gameObject.name + " with sword");
         if (collision.gameObject.tag == "enemy") //Check if sword is hitting enemy
         {
-            timer.incrementBirdsSlain();
+            //timer.incrementBirdsSlain();
             splatter.transform.position = collision.gameObject.transform.position;
             splatter.Play();
             if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !animator.IsInTransition(0)) //Check if animation is playing, if it is, base damage off animation
@@ -72,6 +74,11 @@ public class swordController : MonoBehaviour
             else
             {
                 collision.gameObject.GetComponent<Enemy1AI>().health -= 1;
+                if(collision.gameObject.GetComponent<Enemy1AI>().health <= 0)
+                {
+                    timer.incrementBirdsSlain();
+                }
+                //try to push living birds back here
             }
         }
     }

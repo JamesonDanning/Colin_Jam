@@ -5,12 +5,15 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     public GameObject enemy1;
+    public GameObject enemy2;
     public float initalSpawnTime;
     public float spawnDelay;
     public bool stopSpawning = false;
     private Bounds bounds;
     private Camera mainCamera;
     private Vector2 viewportPoint;
+
+    private int enemySwap = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -30,6 +33,7 @@ public class EnemySpawner : MonoBehaviour
 
     void SpawnEnemy()
     {
+        enemySwap++;
         float randomNumX = 0;
         float randomNumY = 0;
         if (stopSpawning)
@@ -43,7 +47,16 @@ public class EnemySpawner : MonoBehaviour
             randomNumY = Random.Range(bounds.min.y, bounds.max.y);
             viewportPoint = mainCamera.WorldToViewportPoint(new Vector2(randomNumX, randomNumY));
         }
-        Instantiate(enemy1, new Vector2(randomNumX, randomNumY), Quaternion.identity);
+        if (enemySwap == 4)
+        {
+            Instantiate(enemy2, new Vector2(randomNumX, randomNumY), Quaternion.identity);
+            enemySwap = 0;
+            spawnDelay /= 10f;
+        }
+        else
+        {
+            Instantiate(enemy1, new Vector2(randomNumX, randomNumY), Quaternion.identity);
+        }
         viewportPoint = new Vector2(0,0);
     }
 
